@@ -9,3 +9,4 @@ class ContractBasicParams(BaseModel):
     protocol_name: str  # 用於區分不同的 protocol 的 contract
     chain: Chain  # web3.py 好像沒有 chain 的 class
     contract: Contract
+    metadata: dict # 用於存放 contract 的 metadata，例如 pool_name 等等
