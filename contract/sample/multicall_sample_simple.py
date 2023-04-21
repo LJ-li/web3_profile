@@ -4,6 +4,8 @@ from dotenv import load_dotenv
 from multicall import Call, Multicall
 from web3 import Web3
 
+from contract.contract.erc_20 import ERC20
+
 # 這邊可以用成 enum
 MKR_TOKEN = '0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2'
 MKR_WHALE = '0x40f2ec751f922db371b2404049a40d1d5de57ab0'
@@ -25,8 +27,8 @@ w3 = Web3(
 print(w3.eth.chain_id)
 multi = Multicall(
     calls=[
-        Call(target=MKR_TOKEN, function=['balanceOf(address)(uint256)', MKR_WHALE], returns=[('whale', from_wei)]),
-        Call(target=MKR_TOKEN, function=['balanceOf(address)(uint256)', MKR_FISH], returns=[('fish', from_wei)]),
+        Call(target=MKR_TOKEN, function=ERC20.balance_of(address=MKR_WHALE), returns=[('whale', from_wei)]),
+        Call(target=MKR_TOKEN, function=ERC20.balance_of(address=MKR_FISH), returns=[('fish', from_wei)]),
     ],
     _w3=w3,
 )
