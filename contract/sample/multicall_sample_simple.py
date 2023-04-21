@@ -30,5 +30,5 @@ multi = Multicall(
     ],
     _w3=w3,
 )
-result = await multi()
+result = multi()
 print()  # {'whale': 566437.0921992733, 'fish': 7005.0, 'supply': 1000003.1220798912}
